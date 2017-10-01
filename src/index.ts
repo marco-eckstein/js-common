@@ -27,4 +27,18 @@ export class JsCommon {
             }
         }
     };
+    public i18nUtil = new class I18nUtil {
+        public transform(node: any, language: string): any {
+            const newNode: any = {};
+            for (const childName of Object.getOwnPropertyNames(node)) {
+                const child = node[childName];
+                if (typeof child === "string") {
+                    return node[language];
+                } else {
+                    newNode[childName] = this.transform(child, language);
+                }
+            }
+            return newNode;
+        }
+    };
 }
