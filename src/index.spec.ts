@@ -24,6 +24,14 @@ describe("DateUtil", () => {
             expect(dateUtil.parseTime("0:00")).toEqual({ hours: 0, minutes: 0 });
         });
     });
+
+    describe("getDateAtTime", () => {
+        it("works", () => {
+            const date = new Date(2017, 9, 4, 10, 20, 30, 40);
+            const time = new Date(1999, 0, 1, 11, 22, 33, 44);
+            expect(dateUtil.getDateAtTime(date, time)).toEqual(new Date(2017, 9, 4, 11, 22, 33, 44));
+        });
+    });
 });
 
 describe("GeoUtil", () => {

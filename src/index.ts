@@ -21,6 +21,21 @@ export class JsCommon {
 
             return { hours: parseInt(hours, 10), minutes: parseInt(minutes, 10) };
         }
+
+        // TODO: Check whether this can be better replaced with a lib like moment.js.
+        public getDateAtTime(date: Date, time: Date) {
+            const result = new Date();
+
+            result.setFullYear(date.getFullYear());
+            result.setMonth(date.getMonth());
+            result.setDate(date.getDate());
+            result.setHours(time.getHours());
+            result.setMinutes(time.getMinutes());
+            result.setSeconds(time.getSeconds());
+            result.setMilliseconds(time.getMilliseconds());
+
+            return result;
+        }
     };
 
     public geoUtil = new class GeoUtil {
