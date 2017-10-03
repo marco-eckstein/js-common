@@ -40,5 +40,49 @@ export class JsCommon {
             }
             return newNode;
         }
+
+        // TODO: Check whether this can be better replaced with a lib like moment.js.
+        public formatTimeInterval(beginDate: Date, endDate: Date, language: "en" | "de") {
+            const extraLongHyphen = "–"; // Your editor may display this as a regular hyphen.
+            const separator = " " + extraLongHyphen + " ";
+            const postfix = language === "en" ? "" : " Uhr";
+            return formatTime(beginDate) + separator + formatTime(endDate) + postfix;
+
+            function formatTime(date: Date) {
+                const h = date.getHours();
+                const m = date.getMinutes();
+                if (language === "en") {
+                    if (m === 0) {
+                        if (h === 0) {
+                            return "12 midnight";
+                        } else if (h < 12) {
+                            return h + " am";
+                        } else if (h === 12) {
+                            return "12 noon";
+                        } else {
+                            return (h - 12) + " pm";
+                        }
+                    } else {
+                        if (h < 12) {
+                            return h + ":" + pad(m) + " am";
+                        } else if (h === 12) {
+                            return h + ":" + pad(m) + " pm";
+                        } else {
+                            return (h - 12) + ":" + pad(m) + " pm";
+                        }
+                    }
+                } else {
+                    if (m === 0) {
+                        return h;
+                    } else {
+                        return h + ":" + pad(m);
+                    }
+                }
+
+                function pad(n: number) {
+                    return n < 10 ? "0" + n : n;
+                }
+            }
+        }
     };
 }

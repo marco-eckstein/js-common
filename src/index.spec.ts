@@ -68,4 +68,40 @@ describe("I18nUtil", () => {
             expect(JSON.stringify(actualOutput)).toEqual(JSON.stringify(expectedOutput));
         });
     });
+
+    describe("formatTimeInterval", () => {
+
+        const extraLongHyphen = "–"; // Your editor may display this as a regular hyphen.
+        const separator = " " + extraLongHyphen + " ";
+
+        describe("from am to pm", () => {
+            const begin = new Date(2000, 0, 1, 4, 5);
+            const end = new Date(2000, 0, 1, 19, 0);
+
+            it("works for English language", () => {
+                expect(i18nUtil.formatTimeInterval(begin, end, "en"))
+                    .toEqual("4:05 am" + separator + "7 pm");
+            });
+
+            it("works for German language", () => {
+                expect(i18nUtil.formatTimeInterval(begin, end, "de"))
+                    .toEqual("4:05" + separator + "19 Uhr");
+            });
+        });
+
+        describe("from noon to midnight", () => {
+            const begin = new Date(2000, 0, 1, 12, 0);
+            const end = new Date(2000, 0, 1, 24, 0);
+
+            it("works for English language", () => {
+                expect(i18nUtil.formatTimeInterval(begin, end, "en"))
+                    .toEqual("12 noon" + separator + "12 midnight");
+            });
+
+            it("works for German language", () => {
+                expect(i18nUtil.formatTimeInterval(begin, end, "de"))
+                    .toEqual("12" + separator + "0 Uhr");
+            });
+        });
+    });
 });
