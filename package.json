@@ -1,6 +1,6 @@
 {
   "name": "@marco-eckstein/js-common",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "JavaScript Commons (Utilities implemented in Typescript) ",
   "main": "target/index.js",
   "types": "target/index.d.ts",
