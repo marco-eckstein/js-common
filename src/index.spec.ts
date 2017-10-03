@@ -130,4 +130,40 @@ describe("I18nUtil", () => {
             });
         });
     });
+
+    describe("abbreviateWeekDay", () => {
+        it("works for English language", () => {
+            expect(i18nUtil.abbreviateWeekDay("Monday", "en")).toEqual("Mon");
+        });
+
+        it("works for German language", () => {
+            expect(i18nUtil.abbreviateWeekDay("Montag", "de")).toEqual("Mo");
+        });
+    });
+
+    describe("formatNumberString", () => {
+        describe("format dot format", () => {
+            const numberString = "47.11";
+
+            it("works for English language", () => {
+                expect(i18nUtil.formatNumberString(numberString, "en")).toEqual("47.11");
+            });
+
+            it("works for German language", () => {
+                expect(i18nUtil.formatNumberString(numberString, "de")).toEqual("47,11");
+            });
+        });
+
+        describe("format comma format", () => {
+            const numberString = "47,11";
+
+            it("works for English language", () => {
+                expect(i18nUtil.formatNumberString(numberString, "en")).toEqual("47.11");
+            });
+
+            it("works for German language", () => {
+                expect(i18nUtil.formatNumberString(numberString, "de")).toEqual("47,11");
+            });
+        });
+    });
 });

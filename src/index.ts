@@ -100,6 +100,20 @@ export class JsCommon {
                 }
             }
         }
+
+        // TODO: Check whether this can be better replaced with a I18n lib.
+        public abbreviateWeekDay(weekday: string, language: "en" | "de") {
+            const charCount = language === "en" ? 3 : 2;
+            return weekday.substring(0, charCount);
+        }
+
+        // TODO: Check whether this can be better replaced with a I18n lib.
+        public formatNumberString(numberString: string, language: "en" | "de") {
+            return language === "en" ?
+                numberString.replace(/\,/, ".")
+                :
+                numberString.replace(/\./, ",");
+        }
     };
 
     public domUtil = new class DomUtil {
