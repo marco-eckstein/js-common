@@ -1,5 +1,31 @@
 import { GeoPosition, JsCommon } from "./index";
 
+describe("DateUtil", () => {
+    const dateUtil = new JsCommon().dateUtil;
+
+    describe("parseTime", () => {
+        it("parses arbitrary date", () => {
+            expect(dateUtil.parseTime("15:45")).toEqual({ hours: 15, minutes: 45 });
+        });
+
+        it("parses date without time", () => {
+            expect(dateUtil.parseTime("15")).toEqual({ hours: 15, minutes: 0 });
+        });
+
+        it("parses 0:00", () => {
+            expect(dateUtil.parseTime("0:00")).toEqual({ hours: 0, minutes: 0 });
+        });
+
+        it("parses 00:00", () => {
+            expect(dateUtil.parseTime("00:00")).toEqual({ hours: 0, minutes: 0 });
+        });
+
+        it("parses 24:00", () => {
+            expect(dateUtil.parseTime("0:00")).toEqual({ hours: 0, minutes: 0 });
+        });
+    });
+});
+
 describe("GeoUtil", () => {
     const geoUtil = new JsCommon().geoUtil;
 

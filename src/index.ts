@@ -7,6 +7,22 @@ export interface GeoPosition {
 }
 
 export class JsCommon {
+    public dateUtil = new class DateUtil {
+        // TODO: Check whether this can be better replaced with a lib like moment.js.
+        public parseTime(time: string) {
+            const parts = time.split(":");
+
+            if (parts.length > 2) {
+                throw new Error("Not implemented support for time string: " + time);
+            }
+
+            const hours = parts[0] === "24" ? "0" : parts[0];
+            const minutes = parts.length > 1 ? parts[1] : "0";
+
+            return { hours: parseInt(hours, 10), minutes: parseInt(minutes, 10) };
+        }
+    };
+
     public geoUtil = new class GeoUtil {
         /**
          * Adapted from http://stackoverflow.com/q/18883601/443836
