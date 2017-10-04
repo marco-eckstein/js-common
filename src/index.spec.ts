@@ -187,9 +187,9 @@ describe("OpeningTimesUtil", () => {
         const intervals = [
             { begin: dateAtTime(12), end: dateAtTime(16) },
             { begin: dateAtTime(10), end: dateAtTime(20) },
-            { begin: dateAtTime(0), end: dateAtTime(0) },
+            { begin: dateAtTime(10), end: dateAtTime(1) },
             null,
-            { begin: dateAtTime(10), end: dateAtTime(20) },
+            { begin: dateAtTime(0), end: dateAtTime(0) },
             { begin: dateAtTime(10), end: dateAtTime(1) },
             { begin: dateAtTime(10), end: dateAtTime(1) },
         ];
@@ -224,6 +224,18 @@ describe("OpeningTimesUtil", () => {
                 expect(openingTimesUtil.isOpen(intervals, 1, dateAtTime(20))).toBe(false);
             });
 
+            it("returns false if an opening time is undefined", () => {
+                expect(openingTimesUtil.isOpen(intervals, 3, dateAtTime(3))).toBe(false);
+            });
+
+            it("works when open all day", () => {
+                expect(openingTimesUtil.isOpen(intervals, 4, dateAtTime(0))).toBe(true);
+                expect(openingTimesUtil.isOpen(intervals, 4, dateAtTime(1))).toBe(true);
+                expect(openingTimesUtil.isOpen(intervals, 4, dateAtTime(12))).toBe(true);
+                expect(openingTimesUtil.isOpen(intervals, 4, dateAtTime(23))).toBe(true);
+                expect(openingTimesUtil.isOpen(intervals, 4, dateAtTime(23, 59, 59, 999))).toBe(true);
+            });
+
             it("works for special opening times between friday and saturday", () => {
                 expect(openingTimesUtil.isOpen(intervals, 5, dateAtTime(23))).toBe(true);
                 expect(openingTimesUtil.isOpen(intervals, 6, dateAtTime(0))).toBe(true);
@@ -242,19 +254,6 @@ describe("OpeningTimesUtil", () => {
                 expect(openingTimesUtil.isOpen(intervals, 0, dateAtTime(2))).toBe(false);
                 expect(openingTimesUtil.isOpen(intervals, 0, dateAtTime(12))).toBe(true);
             });
-
-            it("works when open all day", () => {
-                expect(openingTimesUtil.isOpen(intervals, 2, dateAtTime(0))).toBe(true);
-                expect(openingTimesUtil.isOpen(intervals, 2, dateAtTime(1))).toBe(true);
-                expect(openingTimesUtil.isOpen(intervals, 2, dateAtTime(12))).toBe(true);
-                expect(openingTimesUtil.isOpen(intervals, 2, dateAtTime(23))).toBe(true);
-                expect(openingTimesUtil.isOpen(intervals, 2, dateAtTime(23, 59, 59, 999))).toBe(true);
-            });
-
-            it("returns false if an opening time is undefined", () => {
-                expect(openingTimesUtil.isOpen(intervals, 3, dateAtTime(3))).toBe(false);
-            });
-
         });
     });
 });
