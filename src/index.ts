@@ -168,7 +168,6 @@ export class JsCommon {
             time?: Date,
         ) {
             const getDateAtTime = new JsCommon().dateUtil.getDateAtTime;
-            const millisecondsOfADay = 24 * 60 * 60 * 1000;
             const currentInterval = openingTimeIntervals[dayOfWeek];
 
             if (!currentInterval) {
@@ -193,7 +192,7 @@ export class JsCommon {
             if (dayBegin > dayEnd) {
                 // The day has special opening times, so adjust the end time.
                 const nextDate = new Date(0);
-                nextDate.setTime(nextDate.getTime() + millisecondsOfADay);
+                nextDate.setDate(nextDate.getDate() + 1);
                 dayEnd = getDateAtTime(nextDate, currentInterval.end);
             }
 
@@ -206,7 +205,7 @@ export class JsCommon {
 
             const previousDayOfWeek = (dayOfWeek === 0 ? 6 : dayOfWeek - 1);
             const previousDate = new Date(0);
-            previousDate.setTime(previousDate.getTime() - millisecondsOfADay);
+            previousDate.setDate(previousDate.getDate() - 1);
             const previousInterval = openingTimeIntervals[previousDayOfWeek];
 
             if (!previousInterval) {
