@@ -166,7 +166,7 @@ export class JsCommon {
             openingTimeIntervals: Array<TimeInterval | null>,
             dayOfWeek: DayOfWeek,
             time?: Date,
-        ) {
+        ): boolean {
             const getDateAtTime = new JsCommon().dateUtil.getDateAtTime;
             const currentInterval = openingTimeIntervals[dayOfWeek];
 
@@ -204,14 +204,14 @@ export class JsCommon {
             // special opening times on the previous day.
 
             const previousDayOfWeek = (dayOfWeek === 0 ? 6 : dayOfWeek - 1);
-            const previousDate = new Date(0);
-            previousDate.setDate(previousDate.getDate() - 1);
             const previousInterval = openingTimeIntervals[previousDayOfWeek];
 
             if (!previousInterval) {
                 return false;
             }
 
+            const previousDate = new Date(0);
+            previousDate.setDate(previousDate.getDate() - 1);
             const previousDayBegin = getDateAtTime(previousDate, previousInterval.begin);
             let previousDayEnd = getDateAtTime(previousDate, previousInterval.end);
 
