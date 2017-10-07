@@ -206,21 +206,19 @@ export class JsCommon {
             const previousDayOfWeek = (dayOfWeek === 0 ? 6 : dayOfWeek - 1);
             const previousInterval = openingTimeIntervals[previousDayOfWeek];
 
-            if (!previousInterval) {
-                return false;
-            }
+            if (previousInterval) {
+                const previousDate = new Date(0);
+                previousDate.setDate(previousDate.getDate() - 1);
+                const previousDayBegin = getDateAtTime(previousDate, previousInterval.begin);
+                let previousDayEnd = getDateAtTime(previousDate, previousInterval.end);
 
-            const previousDate = new Date(0);
-            previousDate.setDate(previousDate.getDate() - 1);
-            const previousDayBegin = getDateAtTime(previousDate, previousInterval.begin);
-            let previousDayEnd = getDateAtTime(previousDate, previousInterval.end);
+                if (previousDayBegin > previousDayEnd) {
 
-            if (previousDayBegin > previousDayEnd) {
+                    // Previous day indeed has special opening times, so adjust the end time.
+                    previousDayEnd = getDateAtTime(date, previousInterval.end);
 
-                // Previous day indeed has special opening times, so adjust the end time.
-                previousDayEnd = getDateAtTime(date, previousInterval.end);
-
-                return dayTime < previousDayEnd;
+                    return dayTime < previousDayEnd;
+                }
             }
 
             return false;
