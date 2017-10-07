@@ -170,34 +170,34 @@ export class JsCommon {
             const getDateAtTime = new JsCommon().dateUtil.getDateAtTime;
             const currentInterval = openingTimeIntervals[dayOfWeek];
 
-            if (!currentInterval) {
-                // TODO: This is a bug. Could be open with previous day's opening times.
-                return false;
-            }
-
             if (!time) {
-                return true;
+                return !!currentInterval;
             }
 
             const date = new Date(0);
-            const dayBegin = getDateAtTime(date, currentInterval.begin);
-            let dayEnd = getDateAtTime(date, currentInterval.end);
             const dayTime = getDateAtTime(date, time);
 
-            if (dayBegin.getTime() === dayEnd.getTime()) {
-                // Special case: Always open
-                return true;
-            }
+            if (currentInterval) {
+                // Is it open due to today's opening times?
 
-            if (dayBegin > dayEnd) {
-                // The day has special opening times, so adjust the end time.
-                const nextDate = new Date(0);
-                nextDate.setDate(nextDate.getDate() + 1);
-                dayEnd = getDateAtTime(nextDate, currentInterval.end);
-            }
+                const dayBegin = getDateAtTime(date, currentInterval.begin);
+                let dayEnd = getDateAtTime(date, currentInterval.end);
 
-            if (dayBegin <= dayTime && dayTime < dayEnd) {
-                return true;
+                if (dayBegin.getTime() === dayEnd.getTime()) {
+                    // Special case: Always open
+                    return true;
+                }
+
+                if (dayBegin > dayEnd) {
+                    // The day has special opening times, so adjust the end time.
+                    const nextDate = new Date(0);
+                    nextDate.setDate(nextDate.getDate() + 1);
+                    dayEnd = getDateAtTime(nextDate, currentInterval.end);
+                }
+
+                if (dayBegin <= dayTime && dayTime < dayEnd) {
+                    return true;
+                }
             }
 
             // Seems to be closed so far, but maybe it is open due to

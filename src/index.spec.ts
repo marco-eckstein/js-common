@@ -187,7 +187,7 @@ describe("OpeningTimesUtil", () => {
         const intervals = [
             { begin: dateAtTime(12), end: dateAtTime(16) },
             { begin: dateAtTime(10), end: dateAtTime(20) },
-            { begin: dateAtTime(10), end: dateAtTime(1) },
+            { begin: dateAtTime(10), end: dateAtTime(2) },
             null,
             { begin: dateAtTime(0), end: dateAtTime(0) },
             { begin: dateAtTime(10), end: dateAtTime(1) },
@@ -224,7 +224,10 @@ describe("OpeningTimesUtil", () => {
                 expect(openingTimesUtil.isOpen(intervals, 1, dateAtTime(20))).toBe(false);
             });
 
-            it("returns false if an opening time is undefined", () => {
+            it("works for special opening times before a closed day", () => {
+                expect(openingTimesUtil.isOpen(intervals, 3, dateAtTime(0))).toBe(true);
+                expect(openingTimesUtil.isOpen(intervals, 3, dateAtTime(1))).toBe(true);
+                expect(openingTimesUtil.isOpen(intervals, 3, dateAtTime(2))).toBe(false);
                 expect(openingTimesUtil.isOpen(intervals, 3, dateAtTime(3))).toBe(false);
             });
 
