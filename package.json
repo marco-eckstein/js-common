@@ -1,7 +1,7 @@
 {
-  "name": "@marco-eckstein/js-common",
+  "name": "@marco-eckstein/js-utils",
   "version": "0.5.0",
-  "description": "JavaScript Commons (Utilities implemented in Typescript) ",
+  "description": "JavaScript utilities implemented in Typescript",
   "main": "target/index.js",
   "types": "target/index.d.ts",
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marco-eckstein/js-common.git"
+    "url": "git+https://github.com/marco-eckstein/js-utils.git"
   },
   "keywords": [],
   "author": "Marco Eckstein <marco.eckstein@gmx.de>",
@@ -28,9 +28,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marco-eckstein/js-common/issues"
+    "url": "https://github.com/marco-eckstein/js-utils/issues"
   },
-  "homepage": "https://github.com/marco-eckstein/js-common#readme.md",
+  "homepage": "https://github.com/marco-eckstein/js-utils#readme.md",
   "dependencies": {
     "core-js": "^2.4.1",
     "source-map-support": "^0.4.15"

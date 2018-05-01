@@ -1,3 +1,3 @@
-[![npm version](https://badge.fury.io/js/%40marco-eckstein%2Fjs-common.svg)](https://badge.fury.io/js/%40marco-eckstein%2Fjs-common)
+[![npm version](https://badge.fury.io/js/%40marco-eckstein%2Fjs-utils.svg)](https://badge.fury.io/js/%40marco-eckstein%2Fjs-utils)
 
-JavaScript Commons (Utilities implemented in Typescript) 
+JavaScript utilities implemented in Typescript
