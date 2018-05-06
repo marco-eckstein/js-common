@@ -1,15 +1,15 @@
-import { GeoPosition, GeoUtil } from "./GeoUtil";
+import { GeoUtil } from "./GeoUtil";
 
 describe("GeoUtil", () => {
 
-    const berlin: GeoPosition = new class {
-        public lat = () => 52.5;
-        public lng = () => 13.4;
+    const berlin = {
+        latitude: 52.5,
+        longitude: 13.4,
     };
 
-    const munich: GeoPosition = new class {
-        public lat = () => 48.1;
-        public lng = () => 11.6;
+    const munich = {
+        latitude: 48.1,
+        longitude: 11.6,
     };
 
     describe("getDistanceInKm", () => {
