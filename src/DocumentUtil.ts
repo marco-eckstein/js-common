@@ -1,4 +1,4 @@
-export class DomUtil {
+export class DocumentUtil {
 
     // Adapted from https://stackoverflow.com/a/15203639 (also see comments)
     public static isElementVisible(element: Element) {
