@@ -4,6 +4,9 @@
 [![npm downloads](https://img.shields.io/npm/dt/@marco-eckstein/js-utils.svg)](
     https://npm-stat.com/charts.html?package=%40marco-eckstein%2Fjs-utils&from=2018-05-02
 )
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](
+    https://conventionalcommits.org
+)
 
 # js-utils
 
@@ -18,4 +21,5 @@ No global modules other than `npm` are necessary.
   or `npm start` for running the full cycle initially and then watch for file changes which will
   trigger appropriate parts of the build cycle (compile, lint, test). The watch mode is not bulletproof:
   It works for file updates, but you may get problems if you rename or delete files.
+- Run `npm run standard-version` instead of `npm version` to bump the version.
 - Publish with `npm publish --access public`. This will run the full build cycle before publishing.
