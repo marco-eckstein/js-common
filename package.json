@@ -1,6 +1,6 @@
 {
   "name": "@marco-eckstein/js-utils",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "JavaScript utilities implemented in Typescript",
   "main": "target/index.js",
   "types": "target/index.d.ts",
