@@ -1,3 +1,5 @@
+import { StringUtil } from "./StringUtil";
+
 export class DocumentUtil {
 
     // Adapted from https://stackoverflow.com/a/15203639 (also see comments)
@@ -18,5 +20,17 @@ export class DocumentUtil {
             || element.contains(document.elementFromPoint(rect.right, rect.bottom))
             || element.contains(document.elementFromPoint(rect.left, rect.bottom))
         );
+    }
+
+    public static getRelativeBaseURI() {
+        if (document.baseURI) {
+            if (document.location == null) {
+                throw new Error("document.location is null");
+            }
+            const origin = StringUtil.trimX(document.location.origin, "/");
+            return StringUtil.trimX(document.baseURI.substring(origin.length), "/");
+        } else {
+            return "";
+        }
     }
 }
