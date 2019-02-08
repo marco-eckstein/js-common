@@ -1,6 +1,6 @@
 import { StringUtil } from "./StringUtil";
 
-export class DocumentUtil {
+export class BrowserUtil {
 
     // Adapted from https://stackoverflow.com/a/15203639 (also see comments)
     public static isElementVisible(element: Element) {
