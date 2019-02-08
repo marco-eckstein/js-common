@@ -33,4 +33,58 @@ export class DocumentUtil {
             return "";
         }
     }
+
+    /**
+     * Get the event's coordinates relative to the event target's containing SVG element.
+     * Adapted from https://stackoverflow.com/a/42711775.
+     *
+     * @param event A MouseEvent inside the SVG Element
+     * @param svgElement The SVG element containing the event target
+     */
+    public static getRelativeCoordinates(event: MouseEvent, svgElement: SVGSVGElement): DOMPoint {
+        const point = svgElement.createSVGPoint();
+        point.x = event.clientX;
+        point.y = event.clientY;
+        return point.matrixTransform(svgElement.getScreenCTM()!.inverse());
+    }
+
+    /**
+     * Append a script tag with the given source, unless one is already present.
+     */
+    public static appendScriptIfNotPresent(src: string) {
+        if (!document.querySelector(`script[src="${src}"]`)) {
+            const scriptElement = document.createElement("script");
+            scriptElement.src = src;
+            document.body.appendChild(scriptElement);
+        }
+    }
+
+    /**
+     * Gets the has parameters of a location/URL as an object, where each parameters becomes a property.
+     *
+     * Example: For a URL ending in "#a=1&b=2", the object { a: "1", b: "2" } is returned.
+     *
+     * Adapted from https://glitch.com/edit/#!/futuristic-bamboo?path=script.js:16:0
+     */
+    public static getHashParametersAsObject<T>(location: Location | URL): T {
+        return location.hash
+            .substring(1)
+            .split("&")
+            .reduce((object, item) => {
+                if (item) {
+                    const parts = item.split("=");
+                    object[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+                }
+                return object;
+            }, {} as any) as T;
+    }
+
+    /**
+     * Removes the has portion of the current URL by replacing history state.
+     *
+     * Adapted from https://stackoverflow.com/a/5298684.
+     */
+    public static removeHashFromUrl() {
+        history.replaceState("", document.title, window.location.pathname + window.location.search);
+    }
 }
