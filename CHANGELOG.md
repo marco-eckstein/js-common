@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/marco-eckstein/js-utils/compare/v0.10.0...v0.11.0) (2019-02-08)
+
+
+### Code Refactoring
+
+* rename DocumentUtil to BrowserUtil ([008d689](https://github.com/marco-eckstein/js-utils/commit/008d689))
+
+
+### Features
+
+* add new methods ([0a2255b](https://github.com/marco-eckstein/js-utils/commit/0a2255b))
+
+
+### BREAKING CHANGES
+
+* rename DocumentUtil to BrowserUtil
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/marco-eckstein/js-utils/compare/v0.7.0...v0.10.0) (2018-11-27)
 
