@@ -3,6 +3,7 @@
         "tslint:latest"
     ],
     "rules": {
+        "array-type": false,
         "interface-name": [
             true,
             "never-prefix"
