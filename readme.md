@@ -21,6 +21,6 @@ No global modules other than `npm` are necessary.
   or `npm start` for running the full cycle initially and then watch for file changes which will
   trigger appropriate parts of the build cycle (compile, lint, test). The watch mode is not bulletproof:
   It works for file updates, but you may get problems if you rename or delete files.
+- Before bumping the version, make sure the copyright year range in the license file is up to date.
 - Run `npm run standard-version` instead of `npm version` to bump the version.
-- Before publishing, make sure the copyright year range is up to date.
 - Publish with `npm publish --access public`. This will run the full build cycle before publishing.
