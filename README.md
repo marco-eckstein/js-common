@@ -1,3 +1,5 @@
+# js-utils
+
 [![npm version](https://badge.fury.io/js/%40marco-eckstein%2Fjs-utils.svg)](
     https://badge.fury.io/js/%40marco-eckstein%2Fjs-utils
 )
@@ -7,8 +9,6 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](
     https://conventionalcommits.org
 )
-
-# js-utils
 
 JavaScript utilities implemented in Typescript
 
