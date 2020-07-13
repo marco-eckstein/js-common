@@ -42,7 +42,7 @@
     "concurrently": "^5.1.0",
     "jasmine": "^3.5.0",
     "rimraf": "^3.0.2",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "tslint": "^6.0.0",
     "typescript": "^3.7.5"
   }
